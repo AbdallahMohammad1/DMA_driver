@@ -6,18 +6,6 @@
 #ifndef GPIO_H
 #define GPIO_H
 #define GPIO_REG(PORT_ID,REG_ID) (unsigned int*)(PORT_ID + REG_ID)
-//#define RCC_AHB1ENR 		GPIO_REG(0x40023800, 0x30)  				// AHB1 enable bus clock
-#define DMA_LISR 			GPIO_REG(0x40026400, 0x0000)				// DMA low interrupt status register (has the flags of the interrupts for streams 0 to 3)
-#define DMA_HISR 			GPIO_REG(0x40026400, 0x0004)				// DMA high interrupt status register (has the flags of the interrupts for streams 4 to 7)
-#define DMA_LIFCR 			GPIO_REG(0x40026400, 0x0008)				// DMA low interrupt flag clear register (used to clear the corresponding flag in the DMA_LISR register)
-#define DMA_HIFCR 			GPIO_REG(0x40026400, 0x000C)				// DMA high interrupt flag clear register (used to clear the corresponding flag in the DMA_HISR register)
-#define DMA_S0CR 			GPIO_REG(0x40026400, 0x0010)				// DMA stream 0 configuration register
-#define DMA_S0NDTR 			GPIO_REG(0x40026400, 0x0014)				// DMA stream 0 number of data register (Number of data items to transfer or number of transfers to be precise)
-#define DMA_S0PAR 			GPIO_REG(0x40026400, 0x0018)				// DMA stream 0 peripheral address register (stores the address of the source)
-#define DMA_S0M0AR 			GPIO_REG(0x40026400, 0x001C)				// DMA stream 0 memory 0 address register (stores the address of the destination)
-#define DMA_S0M1AR 			GPIO_REG(0x40026400, 0x0020)				// DMA stream 0 memory 1 address register (used in case of Double buffer mode instead of DMA_S0M0AR)
-#define DMA_S0FCR 			GPIO_REG(0x40026400, 0x0024)				// DMA stream 0 FIFO control register
-#define NVIC_ISER1 			GPIO_REG(0xE000E100, 0x04)
 
 
 
