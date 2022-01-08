@@ -12,21 +12,22 @@ void DMA_init(int DMA)
 	DMA_number = DMA;
 	switch (DMA)
 	{
-	case(0):
-		RCC_AHB1ENR |= 1 << 21;					// enable DMA2 clock
-		*NVIC_ISER0	 = 1<<11;  // enable line 56 in NVIC in NVIC_ISER1 (which is bit 24 in the register)
+	case(0): //DMA1
+		RCC_AHB1ENR |= 1 << 21;					// enable DMA1 clock
+		*NVIC_ISER0	 = 1<<11;  					//enable line 11 in NVIC_ISER0
 		break;
-	case(1):
-		RCC_AHB1ENR |= 1 << 22;
-		*NVIC_ISER1	 = 1<<24;
+	case(1): //DMA2
+		RCC_AHB1ENR |= 1 << 22;  //enable DMA2 clock
+		*NVIC_ISER1	 = 1<<24;  // enable line 56 in NVIC in NVIC_ISER1 (which is bit 24 in the register)
 		break;
 	}
 
 }
 void double_check()
 {
-	if((*DMA_registers[DMA_number][0] & 0x20))
+	if((*DMA_registers[DMA_number][0] & 0x20)) //check if the transfer is complete and flag is enabled (6th bit)
 	{
+	//light up a LED on pin 5
 	GPIO_WritePin(0,5,1);
 	}
 	*DMA_registers[DMA_number][2] |= (1<<4);
@@ -47,10 +48,12 @@ void DMA_param(int *src,int *dest,int n,unsigned char trans_size,unsigned char t
 		*DMA_registers[DMA_number][9] &= ~(1<<2);	// DMDIS enabled
 		*DMA_registers[DMA_number][4]   &= ~(0x03 << 21);			// PBURST single
 		*DMA_registers[DMA_number][4]   &= ~(0x03 << 23);			// MBURST single
+		//light up an LED on pin 7 if the transfer mode is single and not M2M transfer mode
 		GPIO_WritePin(0,7,1);
 	}
 	else
 	{
+		//light up an LED on pin 6 if the transfer mode is M2M or not single
 		GPIO_WritePin(0,6,1);
 
 		*DMA_registers[DMA_number][9] |= (1<<2);	// DMDIS disabled
