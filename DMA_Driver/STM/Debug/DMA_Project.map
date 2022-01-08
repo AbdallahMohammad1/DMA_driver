@@ -11,11 +11,6 @@ c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externalt
 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(_exit.o)
                               c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-exit.o) (_exit)
 
-Allocating common symbols
-Common symbol       size              file
-
-DMA_number          0x4               ./Core/Src/DMA.o
-
 Discarded input sections
 
  .text          0x0000000000000000        0x0 c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
@@ -397,12 +392,12 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  *(.bss)
  .bss           0x00000000200000b8       0x1c c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.bss*)
+ .bss.DMA_number
+                0x00000000200000d4        0x4 ./Core/Src/DMA.o
  .bss.destination
-                0x00000000200000d4       0x18 ./Core/Src/main.o
-                0x00000000200000d4                destination
+                0x00000000200000d8       0x18 ./Core/Src/main.o
+                0x00000000200000d8                destination
  *(COMMON)
- COMMON         0x00000000200000ec        0x4 ./Core/Src/DMA.o
-                0x00000000200000ec                DMA_number
                 0x00000000200000f0                . = ALIGN (0x4)
                 0x00000000200000f0                _ebss = .
                 0x00000000200000f0                __bss_end__ = _ebss
@@ -457,12 +452,12 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_info    0x0000000000000398      0x572 ./Core/Src/system_stm32f4xx.o
  .debug_info    0x000000000000090a       0x22 ./Core/Startup/startup_stm32f401ccux.o
 
-.debug_abbrev   0x0000000000000000      0x384
- .debug_abbrev  0x0000000000000000       0xf2 ./Core/Src/DMA.o
- .debug_abbrev  0x00000000000000f2       0xd1 ./Core/Src/GPIO.o
- .debug_abbrev  0x00000000000001c3       0x86 ./Core/Src/main.o
- .debug_abbrev  0x0000000000000249      0x129 ./Core/Src/system_stm32f4xx.o
- .debug_abbrev  0x0000000000000372       0x12 ./Core/Startup/startup_stm32f401ccux.o
+.debug_abbrev   0x0000000000000000      0x395
+ .debug_abbrev  0x0000000000000000      0x103 ./Core/Src/DMA.o
+ .debug_abbrev  0x0000000000000103       0xd1 ./Core/Src/GPIO.o
+ .debug_abbrev  0x00000000000001d4       0x86 ./Core/Src/main.o
+ .debug_abbrev  0x000000000000025a      0x129 ./Core/Src/system_stm32f4xx.o
+ .debug_abbrev  0x0000000000000383       0x12 ./Core/Startup/startup_stm32f401ccux.o
 
 .debug_aranges  0x0000000000000000       0xe8
  .debug_aranges

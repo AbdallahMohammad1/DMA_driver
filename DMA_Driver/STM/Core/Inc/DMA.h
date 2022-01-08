@@ -32,7 +32,9 @@
 #define DMA2_S0M0AR 		DMA_REG(0x40026400, 0x001C)				// DMA stream 0 memory 0 address register (stores the address of the destination)
 #define DMA2_S0M1AR 		DMA_REG(0x40026400, 0x0020)				// DMA stream 0 memory 1 address register (used in case of Double buffer mode instead of DMA_S0M0AR)
 #define DMA2_S0FCR 			DMA_REG(0x40026400, 0x0024)				// DMA stream 0 FIFO control register
+
 #define NVIC_ISER1 			DMA_REG(0xE000E100, 0x04)
+
 
 
 #define BYTE ((unsigned char)0x00)

@@ -1,7 +1,8 @@
 #include "DMA.h"
 #include "GPIO.h"
 #include "stdint.h"
-int DMA_number;
+
+static int DMA_number;
 unsigned int *DMA_registers [2][10] = {{DMA1_LISR, DMA1_HISR, DMA1_LIFCR, DMA1_HIFCR, DMA1_S0CR,
 						  DMA1_S0NDTR, DMA1_S0PAR,DMA1_S0M0AR, DMA1_S0M1AR, DMA1_S0FCR},
 		{DMA2_LISR, DMA2_HISR, DMA2_LIFCR, DMA2_HIFCR, DMA2_S0CR,
