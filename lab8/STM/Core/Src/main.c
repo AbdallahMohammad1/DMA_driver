@@ -14,7 +14,7 @@ int 	destination[ArraySize]={0,0,0,0,0,0};
 void DMA_check()
 {
 	double_check();
-	*DMA_LIFCR |= (1<<4);
+
 }
 
 int main(void) {
@@ -23,7 +23,7 @@ int main(void) {
 	GPIO_Init(0, 6,OUTPUT, PUSH_PULL);
 	GPIO_Init(0, 7,OUTPUT, PUSH_PULL);
 
-	DMA_init();
+	DMA_init(1);
 	DMA_param(source,destination,10,WORD,M_M,SINGLE) ;
 
 	DMA_start();
