@@ -23,14 +23,10 @@ void DMA_init(int DMA)
 	}
 
 }
-void double_check()
+int double_check()
 {
-	if((*DMA_registers[DMA_number][0] & 0x20)) //check if the transfer is complete and flag is enabled (6th bit)
-	{
-	//light up a LED on pin 5
-	GPIO_WritePin(0,5,1);
-	}
 	*DMA_registers[DMA_number][2] |= (1<<4);
+	return (int)(*DMA_registers[DMA_number][0] & 0x20);
 }
 
 void DMA_param(int *src,int *dest,int n,unsigned char trans_size,unsigned char trans_mode,unsigned char trans_type)
@@ -43,27 +39,13 @@ void DMA_param(int *src,int *dest,int n,unsigned char trans_size,unsigned char t
 	*DMA_registers[DMA_number][4] 	|= (trans_size << 11);		// trans_size
 	*DMA_registers[DMA_number][4] 	|= (trans_size << 13);		// trans_size
 	*DMA_registers[DMA_number][4]   |= (0x03 << 9);			// increment mode according to MSIZE and PSIZE
-	if (trans_type == SINGLE && trans_mode != M_M)
-	{
-		*DMA_registers[DMA_number][9] &= ~(1<<2);	// DMDIS enabled
-		*DMA_registers[DMA_number][4]   &= ~(0x03 << 21);			// PBURST single
-		*DMA_registers[DMA_number][4]   &= ~(0x03 << 23);			// MBURST single
-		//light up an LED on pin 7 if the transfer mode is single and not M2M transfer mode
-		GPIO_WritePin(0,7,1);
-	}
-	else
-	{
-		//light up an LED on pin 6 if the transfer mode is M2M or not single
-		GPIO_WritePin(0,6,1);
 
-		*DMA_registers[DMA_number][9] |= (1<<2);	// DMDIS disabled
-		*DMA_registers[DMA_number][4]   |= ( trans_type<< 21);			// PBURST burst 4/8/16
-		*DMA_registers[DMA_number][4]   |= (trans_type << 23);			// MBURST burst 4/8/16
-	}
+	*DMA_registers[DMA_number][4]   |= (trans_type << 21);			// PBURST single
+	*DMA_registers[DMA_number][4]   |= (trans_type << 23);			// MBURST single
+
 }
 void DMA_start()
 {
 	*DMA_registers[DMA_number][4]	|= (0x01 << 4);			// Transfer complete interrupt enable
-	*DMA_registers[DMA_number][2]   = 0; 					//clear all interrupt flags
 	*DMA_registers[DMA_number][4]	|= 1;					// enable stream 0
 }

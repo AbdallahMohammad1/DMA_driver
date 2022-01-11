@@ -63,8 +63,8 @@ all: main-build
 main-build: DMA_Project.elf secondary-outputs
 
 # Tool invocations
-DMA_Project.elf: $(OBJS) $(USER_OBJS) D:\DMA_driver\DMA_Driver\STM\STM32F401CCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "DMA_Project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\DMA_driver\DMA_Driver\STM\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DMA_Project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+DMA_Project.elf: $(OBJS) $(USER_OBJS) C:\Users\abdoz\Documents\GitHub\DMA_driver\DMA_Driver\STM\STM32F401CCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "DMA_Project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\abdoz\Documents\GitHub\DMA_driver\DMA_Driver\STM\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DMA_Project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

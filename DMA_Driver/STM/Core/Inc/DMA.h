@@ -51,7 +51,7 @@
 
 
 void DMA_init(int DMA);
-void double_check();
+int double_check();
 void DMA_param(int *src,int *dest,int n,unsigned char trans_size,unsigned char trans_mode,unsigned char trans_type);
 void DMA_start();
 
